@@ -6,21 +6,11 @@ public class CustomerFactory {
 
     public static  final  String[] names = {"Rahim", "Karim", "Babu", "Mridha", "Joe"};
 
-
     public static Customer getCustomer(String str) {
-
-
-       Customer customer = Arrays.stream(names)
-                .filter(letter -> letter.equalsIgnoreCase(str))
+       return Arrays.stream(names)
+                .filter(name -> name.equalsIgnoreCase(str))
                 .findFirst()
-                .map(RealCustomer::new)
-                .orElse(null);
-
-       if (customer == null) customer = new NullCustomer();
-
-       return customer;
-
-
+                .map(name -> (Customer) new RealCustomer(name))
+                .orElseGet(NullCustomer::new);
     }
-
 }
