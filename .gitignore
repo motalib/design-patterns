@@ -1,0 +1,7 @@
+# Gradle local cache
+.gradle/
+
+.idea/
+
+# Gradle build
+build/
